@@ -23,7 +23,7 @@ char *_getpath(char **env);
 void _getenviron(char **environ);
 void exit_cmds(char *av, char **args, char *ptr, int _exit);
 int _fork(char **args, char **av, char **environ, char *ptr, int id, int c);
-char **token(char *ptr);
+char **tokenizr(char *line);
 int _strlen(char *s);
 char *_getline(void);
 int pathfind(char **args, char **environ);
@@ -32,5 +32,6 @@ char *_strncat(char *dest, const char *src);
 char *_strdup(const char *str);
 char *_getspath(char *command);
 char *_getsenv(char *var);
+char *location(char *path, char *args);
 
 #endif

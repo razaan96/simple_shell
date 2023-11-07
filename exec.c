@@ -71,7 +71,7 @@ char *_getpath(char **environ)
 {
 size_t var, i, c;
 char *path = NULL;
-for (i = 0; _strncmp(environ[i], "PATH", 5); i++)
+for (i = 0; _strcmp(environ[i], "PATH")!= 0; i++)
 {};
 if (environ[i] == NULL)
 return (NULL);

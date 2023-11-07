@@ -17,7 +17,7 @@ cmd = _getline();
 if (cmd)
 {
 pv++;
-usercmd = token(cmd);
+usercmd = tokenizr(cmd);
 if (!usercmd)
 {
 free(cmd);

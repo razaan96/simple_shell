@@ -5,23 +5,23 @@
 *pt: prints a given string
 *Return: always 0
 */
-int is_digit(const char *pt)
+int is_digit(const char *prt)
 {
 unsigned int j;
-for (j = 0; pt[j]; j++)
+for (j = 0; prt[j]; j++)
 {
-if (pt[j] < 48 || pt[j] > 57)
+if (prt[j] < 48 || prt[j] > 57)
 return (0);
 }
 return (1);
 }
 /**
-*exit_cmds - a function that exits shell
-*@av: name of the programme
+*exit_cmds - this function that exits simple shell
+*@av: the name of the programme
 *@ptr: pointer to a character
 *@_exit: exit cmd
-*@args: the given argument
-*Return: return void
+*@args: the argument given
+*Return: always return void
 */
 void exit_cmds(char *av, char **args, char *ptr, int _exit)
 {
@@ -71,7 +71,7 @@ char *_getpath(char **environ)
 {
 size_t var, i, c;
 char *path = NULL;
-for (i = 0; _strcmp(environ[i], "PATH")!= 0; i++)
+for (i = 0; _strcmp(environ[i], "PATH")i = 0;)
 {};
 if (environ[i] == NULL)
 return (NULL);

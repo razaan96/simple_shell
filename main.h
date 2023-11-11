@@ -30,8 +30,8 @@ int pathfind(char **args, char **environ);
 char *_strtok(char *str, const char *delimiter);
 char *_strncat(char *dest, const char *src);
 char *_strdup(const char *str);
-char *_getspath(char *command);
+char *_strchr(char *s, char c);
 char *_getsenv(char *var);
 char *location(char *path, char *args);
 
-#endif
+#endif /* MAIN_H */

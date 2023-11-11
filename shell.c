@@ -6,7 +6,7 @@
  *@environ: contains the environment variable
  *Return: function returns 0 on success
  */
-int main(int ac, char **av, char **environ)
+int shell_main(int ac, char **av, char **environ)
 {
 char *cmd = NULL, **usercmd = NULL;
 int pv = 0, _exit = 0, k = 0;

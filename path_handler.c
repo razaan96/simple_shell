@@ -17,7 +17,7 @@ int pathfind(char **args, char **environ)
         if (strchr(environ[i], '/') != NULL)
         {
             if (stat(environ[i], &st) == 0)
-                return (int)_strdup(environ[i]);
+                return (uintptr_t) _strdup(environ[i]);
             return (0);
         }
     }

@@ -12,6 +12,7 @@
 #include <fcntl.h>
 #include <stddef.h>
 #include <dirent.h>
+#include <stdint.h>
 
 /*extern char **environ;*/
 

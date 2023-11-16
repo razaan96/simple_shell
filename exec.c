@@ -43,8 +43,6 @@ free(ptr);
 free(args);
 exit(2);
 }
-free(ptr);
-free(args);
 exit(exit_stat % 256);
 }
 /**

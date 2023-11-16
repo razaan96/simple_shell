@@ -21,6 +21,7 @@ _strncat(filepath, "\0");
 if (access(filepath, X_OK) == 0)
 {
 free(path_copy);
+path_copy = NULL;
 return (filepath);
 }
 path_token = strtok(NULL, delim);

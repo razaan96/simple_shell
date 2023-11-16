@@ -40,7 +40,7 @@ command[i] = _strdup(tokn);
 tokn = strtok(NULL, DELIM);
 i++;
 }
-free(line);
+free(line), line = NULL;
 command[i] = NULL;
 return (command);
 }

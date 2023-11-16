@@ -1,20 +1,40 @@
 #include "main.h"
 /**
-* _getsenv - Get the value of an environment variable
-* @var: Name of the environment variable
-* Return: Value of the environment variable or NULL
+* getenv - Get the value of an environment variable
+* @variable: Name of the environment variable
+* Return: Value of the environment variable or {printf(name of var)} or NULL
 */
-char *_getsenv(char *var)
-{
-char **environ;
-int i, j, len;
 
-for (i = 0; environ[i]; i++)
+char *getenv(const char *variable)
 {
-len = _strlen(var);
-for (j = 0; j < len && environ[i][j] == var[j]; j++)
-if (j == len && environ[i][j] == '=')
-return (environ[i] + len + 1);
+char **enviro, *aux, *tok, *owo;
+int siz;
+siz = _strlen((char *) variable);
+
+for (enviro = environ; *enviro; ++enviro)
+
+{
+aux = _strdup(*enviro);
+tok = strtok(aux, "=");
+if (tok == NULL)
+{
+free(aux);
+return (NULL);
+}
+
+if (_strlen(tok) != siz)
+{
+free(aux);
+continue;
+}
+if (_strcmp((char *) variable, aux) == 0)
+{
+tok = strtok(NULL, "=");
+owo = _strdup(tok);
+free(aux);
+return (owo);
+}
+free(aux);
 }
 return (NULL);
 }

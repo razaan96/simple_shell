@@ -15,6 +15,7 @@
 #include <stdint.h>
 
 /*extern char **environ;*/
+extern char **environ;
 
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
@@ -34,5 +35,7 @@ char *_strdup(const char *str);
 char *_strchr(char *s, char c);
 char *_getsenv(char *var);
 char *location(char *path, char *args);
+int pathfind(char **args, char **environ);
+char *getenv(const char *variable);
 
 #endif /* MAIN_H */

@@ -1,61 +1,36 @@
 #include "main.h"
 
-int pathfind(char **args, char **environ);
-
 /**
-* pathfind - find the full path of a command in "PATH" directories
-* @args: Array of command-line arguments
-* @environ: Pointer to an array of environment variables
-* Return: Full path of the command or void
+*pathfind - find the full path of a command in "PATH" directories
+*@args: Array of command-line arguments
+*@environ: Pointer to an array of environment variables
+*Return: Full path of the command or void
 */
-
 int pathfind(char **args, char **environ)
-char *pathenv, *fullcmd, *dirs
-int i;
-struct stat st;
-(void)args;
-
-for (i = 0; environ[i]; i++)
 {
-if (strchr(environ[i], '/') != NULL)
+char *tok = NULL, *fpath = NULL, *path_t = NULL;
+size_t v, cmd;
+struct stat stat_ptr;
+if (stat(*args, &stat_ptr) == 0)
+return (-1);
+path_t = _getpath(environ);
+if (!path_t)
+return (-1);
+tok = _strtok(path_t, ":");
+cmd = _strlen(*args);
+while (tok)
 {
-if (stat(environ[i], &st) == 0)
-return ((uintptr_t) _strdup(environ[i]));
+v = _strlen(tok);
+fpath = malloc(sizeof(char) * (v + cmd + 2));
+if (!fpath)
+{
+*args = fpath;
+free(path_t);
 return (0);
 }
+free(fpath);
+tok = _strtok(NULL, ":");
 }
-pathenv = _getsenv("PATH");
-if (!pathenv)
-return (0);
-dirs = strdup(pathenv);
-if (!dirs)
-{
-free(pathenv);
-return (0);
-}
-fullcmd = malloc(_strlen(environ[0]) + 2);
-if (!fullcmd)
-{
-free(pathenv);
-free(dirs);
-return (0);
-}
-dirs = strtok(dirs, ":");
-while (dirs)
-{
-_strcpy(fullcmd, dirs);
-_strncat(fullcmd, "/");
-_strncat(fullcmd, environ[0]);
-if (stat(fullcmd, &st) == 0)
-{
-free(pathenv);
-free(dirs);
-return (0);
-}
-dirs = strtok(NULL, ":");
-}
-free(pathenv);
-free(dirs);
-free(fullcmd);
-return (0);
+free(path_t);
+return (-1);
 }

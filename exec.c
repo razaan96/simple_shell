@@ -1,9 +1,9 @@
 #include "main.h"
 #include <limits.h>
 /**
-*is_digit -this function specifies if a given string contains digits
-*pt: prints a given string
-*Return: always 0
+* is_digit -this function specifies if a given string contains digits
+* @prt: prints a given string
+* Return: always 0
 */
 int is_digit(const char *prt)
 {

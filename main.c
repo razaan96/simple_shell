@@ -37,7 +37,6 @@ _getenviron(environ);
 }
 else
 {
-u = pathfind(&usercmd[0], environ);
 _exit = _fork(usercmd, av, environ, cmds, p, u);
 if (u == 0)
 free(usercmd[0]);

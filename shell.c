@@ -29,7 +29,6 @@ if (!_strcmp(usercmd[0], "env"))
 _getenviron(environ);
 else
 {
-k = pathfind(&usercmd[0], environ);
 _exit = _fork(usercmd, av, environ, cmd, pv, k);
 if (k == 0)
 free(usercmd[0]);

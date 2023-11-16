@@ -28,14 +28,13 @@ int _fork(char **args, char **av, char **environ, char *ptr, int id, int c);
 char **tokenizr(char *line);
 int _strlen(char *s);
 char *_getline(void);
-int pathfind(char **args, char **environ);
 char *_strtok(char *str, const char *delimiter);
 char *_strncat(char *dest, const char *src);
 char *_strdup(const char *str);
 char *_strchr(char *s, char c);
 char *_getsenv(char *var);
 char *location(char *path, char *args);
-int pathfind(char **args, char **environ);
 char *getenv(const char *variable);
+int pathfind(char **args, char **environ);
 
 #endif /* MAIN_H */

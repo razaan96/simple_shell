@@ -1,19 +1,19 @@
 #include "main.h"
 /**
-*_getline - this reads the user command
-*
-*Return: returns a string
-*/
+ * _getline - function reads the input of user
+ *
+ * Return: returns a string
+ */
 char *_getline(void)
 {
-char *ptr = NULL;
-size_t cmds = 0;
+char *p = NULL;
+size_t command = 0;
 if (isatty(STDIN_FILENO))
 write(STDOUT_FILENO, "$ ", 2);
-if (getline(&ptr, &cmds, stdin) == -1)
+if (getline(&p, &command, stdin) == -1)
 {
-free(ptr);
+free(p);
 return (NULL);
 }
-return (ptr);
+return (p);
 }

@@ -1,11 +1,11 @@
 #include "main.h"
 /**
-*main - main function of the shell
-*@av: function holds array strings
-*@environ: function has the environment variable
-*@ac: checks the total arguments in a given variable
-*Return: this function returns 0 on success
- */
+*main - the main function of the shell
+*@ac: function counts the number of argumentsin any variable
+*@av: holds array of strings
+*@environ: environment variable
+*Return: on success returns 0
+*/
 int main(int ac, char **av, char **environ)
 {
 char *cmds = NULL, **usercmd = NULL;
@@ -21,7 +21,7 @@ write(STDOUT_FILENO, "\n", 1);
 exit(_exit);
 }
 p++;
-usercmd = tokenizr(cmds);
+usercmd = token(cmds);
 if (usercmd == NULL)
 {
 free(cmds);
@@ -37,6 +37,7 @@ _getenviron(environ);
 }
 else
 {
+u = pathfind(&usercmd[0], environ);
 _exit = _fork(usercmd, av, environ, cmds, p, u);
 if (u == 0)
 free(usercmd[0]);

@@ -1,31 +1,31 @@
 #include "main.h"
 #include <limits.h>
 /**
-* is_digit -this function specifies if a given string contains digits
-* @prt: prints a given string
-* Return: always 0
+*is_digit - function decodes if string is a num
+*@prt: strings to be studied
+*Return: always ZERO
 */
 int is_digit(const char *prt)
 {
-unsigned int j;
-for (j = 0; prt[j]; j++)
+unsigned int a;
+for (a = 0; prt[a]; a++)
 {
-if (prt[j] < 48 || prt[j] > 57)
+if (prt[a] < 48 || prt[a] > 57)
 return (0);
 }
 return (1);
 }
 /**
-*exit_cmds - this function that exits simple shell
-*@av: the name of the programme
-*@ptr: pointer to a character
-*@_exit: exit cmd
-*@args: the argument given
-*Return: always return void
+*exit_cmds - function flees a simple shell
+*@av: signature of the programme
+*@ptr: the pointer to a character
+*@_exit: function exits cmd
+*@args: argument
+*Return: retursn void always
 */
 void exit_cmds(char *av, char **args, char *ptr, int _exit)
 {
-int exit_stat = 0, digit, len, num;
+int exit_stat = 0, digits, length, number;
 if (!args[1])
 {
 free(ptr);
@@ -33,22 +33,24 @@ free(args);
 exit(_exit);
 }
 exit_stat = atoi(args[1]);
-digit = is_digit(args[1]);
-len = _strlen(args[1]);
-num = exit_stat > INT_MAX;
-if (!digit || len > 10 || num)
+digits = is_digit(args[1]);
+length = _strlen(args[1]);
+number = exit_stat > INT_MAX;
+if (!digits || length > 10 || number)
 {
 fprintf(stderr, "%s: 1: %s: Illegal number: %s\n", av, args[0], args[1]);
 free(ptr);
 free(args);
 exit(2);
 }
+free(ptr);
+free(args);
 exit(exit_stat % 256);
 }
 /**
-*_getenviron - a function that gets the environment variables
-*@env : contains environment variables
-*Return : always 0
+*_getenviron - function gets environment variables
+*@env : contains the env variables
+*Return : void always
 */
 void _getenviron(char **env)
 {
@@ -60,30 +62,27 @@ write(STDOUT_FILENO, "\n", 1);
 i++;
 }
 }
+
 /**
-*_getpath - this function gets the PATH of a given variable
-*@environ: contains environment variables
-*Return: return path
+*_getpath - function finds the PATH of a variable
+*@environ: houses the env variables
+*Return: returns the path to variable
 */
 char *_getpath(char **environ)
 {
-size_t var, i, c;
-char *path = NULL;
-for (i = 0; _strcmp(environ[i], "PATH") != 0; i++)
-{
-
-}
-if (environ[i] == NULL)
+size_t var, j, b;
+char *pat = NULL;
+for (j = 0; _strncmp(environ[j], "PATH", 5); j++)
+{};
+if (environ[j] == NULL)
 return (NULL);
-for (c = 5; environ[i][var]; var++, c++)
-{
-
-}
-path = malloc(sizeof(char) * (c + 1));
-if (path == NULL)
+for (b = 5; environ[j][var]; var++, b++)
+{};
+pat = malloc(sizeof(char) * (b + 1));
+if (pat == NULL)
 return (NULL);
-for (var = 5, c = 0; environ[i][var]; var++, c++)
-path[c] = environ[i][var];
-path[c] = '\0';
-return (path);
+for (var = 5, b = 0; environ[j][var]; var++, b++)
+pat[b] = environ[j][var];
+pat[b] = '\0';
+return (pat);
 }
